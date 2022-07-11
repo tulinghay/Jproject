@@ -1,0 +1,65 @@
+hdt:
+  name: huangda
+
+server:
+  port: 8080
+spring:
+  application:
+    name: notebook
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://train02.mail-ecnu.cn:10014/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: qwe
+  servlet:
+    multipart:
+      max-file-size: 1MB
+  redis:
+    #数据库索引
+    database: 0
+    host: train02.mail-ecnu.cn
+    port: 10015
+    password: qwe
+    #连接超时时间（ms）
+    timeout: 5000
+    # 自定义redis默认过期时间（单位：时）
+    expire-time: 24
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: -1
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      # 配置逻辑删除
+      logic-delete-field: isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+rocketmq:
+  # nameserver端口为10016， console端口为10017
+#  name-server: train02.mail-ecnu.cn:10016
+  name-server: localhost:9876
+  producer:
+    group: test_producer
+    send-message-timeout: 30000
+
+
+# 配置rocketmq
+
+# NameServer地址
+#  apache.rocketmq.namesrvAddr=192.168.56.129:9876
+#  # 生产者的组名
+myconfig:
+  value2: huangda
+  value1: da
+#  apache.rocketmq.producer.producerGroup=test_Producer
+temp: sdfasdfas
